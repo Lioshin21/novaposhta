@@ -1,8 +1,10 @@
 import React from "react";
-import { Typography, Breadcrumbs, Link, styled } from "@mui/material";
 import { Outlet } from "react-router-dom";
+import { styled } from "@mui/material/styles";
+import Header from "./components/Header";
+import { linkObjectType } from "./types/types";
 
-const Header = styled("div")(() => ({
+const HeaderWrapper = styled("header")(() => ({
   display: "flex",
   justifyContent: "center",
   marginTop: 20,
@@ -10,18 +12,17 @@ const Header = styled("div")(() => ({
 }));
 
 function App() {
+
+  const arrayOfLinks: Array<linkObjectType> = [
+    { path: "/", title: "Перевірити статус відправлення" },
+    { path: "/offices", title: "Список відділень" },
+  ];
+
   return (
     <>
-      <Header>
-        <Breadcrumbs aria-label="breadcrumb">
-          <Link underline="hover" color="inherit" href="/">
-            Tracking Page
-          </Link>
-          <Link underline="hover" color="inherit" href="/offices">
-            Offices
-          </Link>
-        </Breadcrumbs>
-      </Header>
+      <HeaderWrapper>
+        <Header arrayOfLinks={arrayOfLinks}/>
+      </HeaderWrapper>
       <Outlet />
     </>
   );
