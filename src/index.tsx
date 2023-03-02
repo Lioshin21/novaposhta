@@ -6,7 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import TrackingPage from "./components/pages/TrackingPage/TrackingPage";
-import OfficesPage from "./components/pages/OfficesPage";
+import OfficesPage from "./components/pages/OfficesPage/OfficesPage";
 
 const router = createBrowserRouter([
   {
