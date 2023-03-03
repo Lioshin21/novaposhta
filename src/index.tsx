@@ -7,6 +7,8 @@ import reportWebVitals from "./reportWebVitals";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import TrackingPage from "./components/pages/TrackingPage/TrackingPage";
 import OfficesPage from "./components/pages/OfficesPage/OfficesPage";
+import { Provider } from "react-redux/es/exports";
+import { store } from "./redux/store";
 
 const router = createBrowserRouter([
   {
@@ -29,7 +31,9 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>
 );
 

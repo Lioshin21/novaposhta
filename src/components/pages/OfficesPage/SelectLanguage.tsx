@@ -5,20 +5,25 @@ import {
   MenuItem,
   Select,
 } from "@mui/material";
+import { useAppDispatch, useAppSelector } from "../../../redux/store";
+import { changeLanguage } from "../../../redux/slicers/officesSlicer";
 
 const SelectLanguage = () => {
+  const currentLanguage = useAppSelector(state => state.offices.language)
+  const dispatch = useAppDispatch()
+
   return (
     <FormControl fullWidth={false}>
       <InputLabel id="demo-simple-select-label">Мова</InputLabel>
       <Select
         labelId="demo-simple-select-label"
         id="demo-simple-select"
-        value={0}
+        value={currentLanguage}
         label="Age"
         // onChange={handleChange}
       >
-        <MenuItem value={0}>UA</MenuItem>
-        <MenuItem value={1}>RU</MenuItem>
+        <MenuItem value={'UA'} onClick={()=> dispatch(changeLanguage('UA'))}>UA</MenuItem>
+        <MenuItem value={'RU'} onClick={()=> dispatch(changeLanguage('RU'))}>RU</MenuItem>
       </Select>
     </FormControl>
   );
