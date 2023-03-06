@@ -29,7 +29,7 @@ const OfficesList = () => {
               offices.map((office: WarehouseType) => {
                 return (
                   <OfficeItem
-                    officeName={currentLanguage === 'UA' ? office.Description : office.DescriptionRu}
+                    officeName={currentLanguage === 'UA' ? office.Description + `, ${office.CityDescription}` : office.DescriptionRu + `, ${office.CityDescriptionRu}`}
                     workingTime={office.Schedule}
                     maxWeight={
                       office.TotalMaxWeightAllowed === "0"

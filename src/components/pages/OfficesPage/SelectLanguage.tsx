@@ -20,7 +20,6 @@ const SelectLanguage = () => {
         id="demo-simple-select"
         value={currentLanguage}
         label="Age"
-        // onChange={handleChange}
       >
         <MenuItem value={'UA'} onClick={()=> dispatch(changeLanguage('UA'))}>UA</MenuItem>
         <MenuItem value={'RU'} onClick={()=> dispatch(changeLanguage('RU'))}>RU</MenuItem>
