@@ -1,7 +1,7 @@
 import React from "react";
 
 // Components
-import { styled } from "@mui/material";
+import { CircularProgress, styled } from "@mui/material";
 import OfficeItem from "./OfficeItem";
 import PaginationList from "./PaginationList";
 
@@ -13,6 +13,8 @@ import { WarehouseType } from "../../../../types/types";
 
 const OfficesList = () => {
   const offices = useAppSelector((state) => state.offices.warehouses);
+  const isFetching = useAppSelector((state) => state.offices.isFetching);
+  const currentLanguage = useAppSelector(state => state.offices.language)
 
   return (
     <>
@@ -21,20 +23,24 @@ const OfficesList = () => {
       ) : (
         <>
           <OfficesListWrapper>
-            {offices.map((office: WarehouseType) => {
-              return (
-                <OfficeItem
-                  officeName={office.Description}
-                  workingTime={office.Schedule}
-                  maxWeight={
-                    office.TotalMaxWeightAllowed === '0'
-                      ? office.PlaceMaxWeightAllowed
-                      : office.TotalMaxWeightAllowed
-                  }
-                  key={office.SiteKey}
-                />
-              );
-            })}
+            {isFetching ? (
+              <CircularProgress />
+            ) : (
+              offices.map((office: WarehouseType) => {
+                return (
+                  <OfficeItem
+                    officeName={currentLanguage === 'UA' ? office.Description : office.DescriptionRu}
+                    workingTime={office.Schedule}
+                    maxWeight={
+                      office.TotalMaxWeightAllowed === "0"
+                        ? office.PlaceMaxWeightAllowed
+                        : office.TotalMaxWeightAllowed
+                    }
+                    key={office.SiteKey}
+                  />
+                );
+              })
+            )}
           </OfficesListWrapper>
           <PaginationList />
         </>
