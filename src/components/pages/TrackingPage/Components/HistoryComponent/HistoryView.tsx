@@ -26,7 +26,7 @@ const HistoryView = () => {
   };
 
   useEffect(() => {
-    const localStorageHistory: Array<string> = window.localStorage.getItem('history') !== null ? JSON.parse(window.localStorage.getItem('history') || '{}') : []
+    const localStorageHistory: Array<string> = JSON.parse(window.localStorage.getItem('history') || '[]');
     dispatch(setHistory(localStorageHistory))
   }, [])
 
