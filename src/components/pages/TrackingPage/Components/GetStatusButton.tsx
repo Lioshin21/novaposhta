@@ -5,7 +5,7 @@ import { Button } from '@mui/material'
 const GetStatusButton = () => {
   return (
     <Button variant="contained" fullWidth={false} >
-      Get status TTN
+      Get status TTH
     </Button>
   )
 }
