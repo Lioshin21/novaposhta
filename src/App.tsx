@@ -1,25 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Outlet } from "react-router-dom";
+import { styled } from "@mui/material/styles";
+import Header from "./components/Header";
+import { linkObjectType } from "./types/types";
+
+const HeaderWrapper = styled("header")(() => ({
+  display: "flex",
+  justifyContent: "center",
+  marginTop: 20,
+  marginBottom: 20,
+}));
 
 function App() {
+
+  const arrayOfLinks: Array<linkObjectType> = [
+    { path: "/", title: "Перевірити статус відправлення" },
+    { path: "/offices", title: "Список відділень" },
+  ];
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <HeaderWrapper>
+        <Header arrayOfLinks={arrayOfLinks}/>
+      </HeaderWrapper>
+      <Outlet />
+    </>
   );
 }
 
