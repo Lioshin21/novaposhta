@@ -1,6 +1,8 @@
 import React from "react";
-
+// Components
 import { Button } from "@mui/material";
+
+// Redux
 import { useAppDispatch, useAppSelector } from "../../../../redux/store";
 import { showTTHInfo } from "../../../../redux/slicers/trackingSlicer";
 
